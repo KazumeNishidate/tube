@@ -21,7 +21,7 @@
   format. You can visualize these using the code
   [VESTA](https://jp-minerals.org/vesta/jp/).
 
-  Here are the brief description of the output files.
+  Here is a brief description of the output files.
 
 - fig1_sandbox.vasp : initial graphen sheet
 - fig2_Ch-T-vectors.vasp : Chiral and translational vectors
@@ -32,3 +32,6 @@
   The file, QE.in, is the atomic position definition for the pw.x of
   [Quantum_ESPRESSO](https://www.quantum-espresso.org/).
   
+  Please refer to the Sec. 7.2 of the book, [C言語によるコンピュータシミュレーション](http://web.cc.iwate-u.ac.jp/~nisidate/main.pdf), for more detail.
+  
+   
