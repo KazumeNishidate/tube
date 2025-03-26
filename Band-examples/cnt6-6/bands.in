@@ -1,0 +1,62 @@
+&control
+   calculation = 'bands'
+   prefix='swnt',
+   tstress = .true.
+   tprnfor = .true.
+   pseudo_dir = '../sssp_pseudo',
+   outdir='./work/'
+   disk_io='low'
+/
+&SYSTEM
+   ibrav = 0
+   nat = 24
+   ntyp = 1
+   nbnd = 70
+   ecutwfc = 40.0
+   occupations = 'smearing'
+   smearing = 'gaussian'
+   degauss = 0.02
+   nosym =.true.
+/
+&electrons
+   electron_maxstep=300,
+   mixing_mode = 'plain'
+   mixing_beta = 0.2
+/
+&ions
+/
+CELL_PARAMETERS {angstrom}
+ 16.27200  0.0    0.0 
+  0.0  16.27200   0.0 
+  0.0   0.0    2.45951
+ATOMIC_SPECIES
+ C    12.011    C.pbe-n-kjpaw_psl.1.0.0.UPF
+ATOMIC_POSITIONS {angstrom}
+C  12.20400  8.13600  0.00000 
+C  11.95867  9.52734  0.00000 
+C  10.17000 11.65899  0.00000 
+C   8.84240 12.14220  0.00000 
+C   6.10200 11.65899  0.00000 
+C   5.01973 10.75086  0.00000 
+C   4.06800  8.13600  0.00000 
+C   4.31333  6.74466  0.00000 
+C   6.10200  4.61301  0.00000 
+C   7.42960  4.12980  0.00000 
+C  10.17000  4.61301  0.00000 
+C  11.25227  5.52114  0.00000 
+C  11.65899 10.17000  1.22976 
+C  10.75086 11.25227  1.22976 
+C   8.13600 12.20400  1.22976 
+C   6.74466 11.95867  1.22976 
+C   4.61301 10.17000  1.22976 
+C   4.12980  8.84240  1.22976 
+C   4.61301  6.10200  1.22976 
+C   5.52114  5.01973  1.22976 
+C   8.13600  4.06800  1.22976 
+C   9.52734  4.31333  1.22976 
+C  11.65899  6.10200  1.22976 
+C  12.14220  7.42960  1.22976 
+K_POINTS {crystal_b}
+2
+0.00000  0.00000  0.00000  50 ! gamma
+0.00000  0.00000  0.50000  1 ! Z

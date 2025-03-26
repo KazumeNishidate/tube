@@ -1,9 +1,9 @@
 &control
-   calculation = 'scf'
+   calculation = 'bands'
    prefix='swnt',
    tstress = .true.
    tprnfor = .true.
-   pseudo_dir = './sssp_pseudo',
+   pseudo_dir = '../sssp_pseudo',
    outdir='./work/'
    disk_io='low'
 /
@@ -63,5 +63,7 @@ C   8.47744  4.04876  0.00000
 C   7.46149  3.36992  3.55000 
 C   9.15627  5.06470  3.55000 
 C   9.15627  5.06470  2.13000 
-K_POINTS {automatic}
-1 1 12  0 0 0
+K_POINTS {crystal_b}
+2
+0.00000  0.00000  0.00000  50 ! gamma
+0.00000  0.00000  0.50000  1 ! Z
