@@ -10,7 +10,7 @@
 
   Type the command `make` and run the code with `./mktb`.
 
-  The Chiral index (n,m)=(10,4) is defined in the setup.c file.
+  The setup.c file defines the Chiral index (n,m)=(10,4).
 
 > tb.n =  10;
 
