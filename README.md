@@ -8,7 +8,7 @@
 
 ### How to use.
 
-  Type the command `make` and run the code with `./mktb`.
+  Type 'make' and run the code with the `./mktb` command.
 
   The setup.c file defines the Chiral index (n,m)=(10,4).
 
@@ -27,9 +27,9 @@
 - fig4_cutout.vasp : cutout the graphene to make a wall of the tube
 - fig5_tube.vasp : (n,m) nanotube 
   
-The file, QE.in, is the atomic position definition for the pw.x of [Quantum_ESPRESSO](https://www.quantum-espresso.org/).
+The file, QE.in, is the atomic coordinates definition for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/).
 
-The directory 'Examples' contains calculated band structures of (10,0), (10,4), (6,6), (8,0), and (9,3) nanotubes in PDF format. Input files for pw.x of QE are also included. Note that some of the 'metallic' nanotubes with small diameters open small energy gaps because of their steep curvature [1,2].
+The directory 'Examples' contains input files for QE and the band structures of (10,0), (10,4), (6,6), (8,0), and (9,3) nanotubes where this program generated the atomic coordinates. Note that some of the 'metallic' nanotubes with small diameters open small energy gaps because of their steep curvature [1,2].
   
 You can refer to the Sec. 7.2 of the book, [C言語によるコンピュータシミュレーション](http://web.cc.iwate-u.ac.jp/~nisidate/main.pdf) (Japanese), for more detail.
   
