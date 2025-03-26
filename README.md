@@ -13,10 +13,11 @@
   The Chiral index (n,m)=(10,4) is defined in the setup.c file.
 
 > tb.n =  10;
+
 > tb.m =  4;
   
-  By redefining the above index number, you can generate (n, m)
-  nanotube atomic coordinates.
+  You can generate (n, m) nanotube atomic coordinates by redefining the above index number.
+
   
   The output file 'fig*vasp' is the atomic coordinates in VASP format. You can visualize these using the code [VESTA](https://jp-minerals.org/vesta/jp/).
 
