@@ -17,7 +17,8 @@ void check_nn(void){
   tb.tty = (double *)calloc(tb.catm, sizeof(double));
   tb.ttz = (double *)calloc(tb.catm, sizeof(double));
   tb.idi = (int *)calloc(tb.catm, sizeof(int));
-  tb.idj = (int *)calloc(tb.catm, sizeof(int));  
+  tb.idj = (int *)calloc(tb.catm, sizeof(int));
+  tb.id_BN = (int *)calloc(tb.catm, sizeof(int));    
 
   rdx = tb.LX*0.5;
   rdy = tb.LY*0.5;
@@ -48,8 +49,8 @@ void check_nn(void){
   }
   printf("   total number of atoms is %d\n\n",tb.catm);
   for(i=0;i<cnt;i++){
-    printf("   duplicated atom detected: (%d,  %d)\n",
-	   tb.idi[i],tb.idj[i]);
+    printf("   duplicated atom detected: (%3d[%d],  %3d[%d])\n",
+	   tb.idi[i],tb.crBN[tb.idi[i]],tb.idj[i],tb.crBN[tb.idj[i]]);
   }
 
   cnt2=0;
@@ -58,13 +59,14 @@ void check_nn(void){
     for(j=0;j<cnt;j++){
       if(i==tb.idj[j]) {
 	dup_flag=1; // duplication detected
-	printf("   eliminating the atom : %d\n",i);
+	printf("   trimming the atom : %d\n",i);
       }
     }
     if(dup_flag==1) continue;
     tb.ttx[cnt2] = tb.tx[i];  
     tb.tty[cnt2] = tb.ty[i];
     tb.ttz[cnt2] = tb.tz[i];
+    tb.id_BN[cnt2] = tb.crBN[i]; // B[0] or N[1]
     cnt2++;
   }
   
@@ -75,8 +77,24 @@ void check_nn(void){
       tb.tx[i] = tb.ttx[i];
       tb.ty[i] = tb.tty[i];
       tb.tz[i] = tb.ttz[i];
+      tb.BN[i] = tb.id_BN[i]; // B[0] or N[1]
     }
   }
+
+  cnt = 0;
+  for(i=0;i<tb.catm;i++){
+    if(tb.BN[i] == 0) cnt++;
+  }
+  tb.n_B = cnt;
+  tb.n_N = tb.catm-cnt;  
+  printf("   number of atoms: (B, N) = (%d, %d) \n\n",tb.n_B, tb.n_N);    
+  if(cnt != tb.catm-cnt) {
+    printf("\n   The number of B must equal the number of N  \n");
+    printf("   to fulfill the cycric boundary condition.   \n");
+    printf("     Calculation was interrupted by this inconsistency.\n");    
+    printf("\n   Try another (n, m) vector set.\n\n");
+  }
+  
   free(tb.ttx);
   free(tb.tty);
   free(tb.ttz);
@@ -132,6 +150,7 @@ void cut_wall(void){
       if(ry >= sy-0.01 && ry <= by+0.01) {
 	tb.crx[cnt] =rx-sx;
 	tb.cry[cnt] =ry-sy;
+	tb.crBN[cnt] =tb.BN[i];  //  B or N
 	if(i==tb.sq[0]) tb.wall[0] = cnt; // new origin
 	if(i==tb.sq[1]) tb.wall[1] = cnt; //     chiral 
 	if(i==tb.sq[2]) tb.wall[2] = cnt; //     trans

@@ -5,7 +5,7 @@
 #include  "prototypes.h"
 
 void set_param(void){
-  tb.n =   8;   // chiral index (n,m)
+  tb.n =   6;   // chiral index (n,m)
   tb.m =   4;
   tb.r_cc = 1.42;  // C-C distance (1.42 A)
   
