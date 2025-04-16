@@ -28,8 +28,8 @@
 - fig3_rotated-wall.vasp : rotated graphene 
 - fig4_cutout.vasp : cutout the graphene to make a wall of the tube
 - fig5_tube.vasp : (n,m) nanotube 
-  
-The file, QE.in, is the atomic coordinates definition for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/).
+
+The file QE.in contains the atomic coordinates definition for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/), which can be visualized using the [XCRYSDEN](http://www.xcrysden.org/).
 
 The directory 'examples' contains input files for QE and the band structures of nanotubes where this program generated the atomic coordinates. Note that some of the 'metallic' carbon nanotubes with small diameters open small energy gaps because of their steep curvature [1,2]. Also, structural relaxations should be performed for h-BN nanotubes before the band structure calculations [3, 4]. 
   
