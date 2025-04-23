@@ -2,6 +2,9 @@
 ###  for FreeBSD of Linux with gcc
 CC= gcc
 CFLAGS= -Wall -O2
+###  If you encounter multiple definition error, try the following
+###  CFLAGS.
+#CFLAGS= -Wall -O2 -z muldefs
 LIBS= -lm 
 
 SOURCES= main.c setup.c files.c rollup.c

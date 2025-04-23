@@ -10,7 +10,7 @@
 
   The 'swcnt' directory contains the carbon nanotube maker, while the 'swbnnt' contains the h-BN nanotube maker. 
 
-  Type 'make' and run the code with the `./mktb` command in these directories.
+  Type 'make' and run the code with the `./mktb` command in these directories. If you encounter a 'multiple definition error' during the GCC compilation, you can avoid it by adding the option '-z muldefs' in the Makefile.
 
   The setup.c file defines the Chiral index (n,m)=(10,4).
 
