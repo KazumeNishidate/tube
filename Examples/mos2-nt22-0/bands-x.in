@@ -1,0 +1,6 @@
+&bands
+outdir='./work',
+prefix='swnt',
+filband='swnt.band',
+lsym=.true.
+/
