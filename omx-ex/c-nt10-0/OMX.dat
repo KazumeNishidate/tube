@@ -1,0 +1,124 @@
+#
+# OpenMX data file 
+# (10, 0) nanotube 
+#
+ 
+System.CurrrentDirectory         ./    # default=./ 
+System.Name         nanotube 
+level.of.stdout       1    # default=1 (1-3)
+level.of.fileout      0    # default=1 (1-3)
+ 
+#
+# Definition of Atomic Species 
+#
+ 
+Species.Number        1
+<Definition.of.Atomic.Species
+  C   C6.0-s2p2d1     C_PBE19
+Definition.of.Atomic.Species>
+#
+# Atoms
+#
+ 
+Atoms.Number          40
+Atoms.SpeciesAndCoordinates.Unit   Ang # Ang|AU
+<Atoms.SpeciesAndCoordinates
+  1 C  11.74331  7.82887  0.00000    2.0  2.0
+  2 C  11.74331  7.82887  1.42000    2.0  2.0
+  3 C  11.55172  9.03850  2.13000    2.0  2.0
+  4 C  10.99571 10.12972  1.42000    2.0  2.0
+  5 C  10.99571 10.12972  0.00000    2.0  2.0
+  6 C   9.03850 11.55172  0.00000    2.0  2.0
+  7 C  11.55172  9.03850  3.55000    2.0  2.0
+  8 C  10.12972 10.99571  3.55000    2.0  2.0
+  9 C  10.12972 10.99571  2.13000    2.0  2.0
+ 10 C   9.03850 11.55172  1.42000    2.0  2.0
+ 11 C   7.82887 11.74331  2.13000    2.0  2.0
+ 12 C   6.61924 11.55172  1.42000    2.0  2.0
+ 13 C   6.61924 11.55172  0.00000    2.0  2.0
+ 14 C   4.66203 10.12972  0.00000    2.0  2.0
+ 15 C   7.82887 11.74331  3.55000    2.0  2.0
+ 16 C   5.52802 10.99571  3.55000    2.0  2.0
+ 17 C   5.52802 10.99571  2.13000    2.0  2.0
+ 18 C   4.66203 10.12972  1.42000    2.0  2.0
+ 19 C   4.10602  9.03850  2.13000    2.0  2.0
+ 20 C   3.91444  7.82887  1.42000    2.0  2.0
+ 21 C   3.91444  7.82887  0.00000    2.0  2.0
+ 22 C   4.66203  5.52802  0.00000    2.0  2.0
+ 23 C   4.10602  9.03850  3.55000    2.0  2.0
+ 24 C   4.10602  6.61924  3.55000    2.0  2.0
+ 25 C   4.10602  6.61924  2.13000    2.0  2.0
+ 26 C   4.66203  5.52802  1.42000    2.0  2.0
+ 27 C   5.52802  4.66203  2.13000    2.0  2.0
+ 28 C   6.61924  4.10602  1.42000    2.0  2.0
+ 29 C   6.61924  4.10602  0.00000    2.0  2.0
+ 30 C   9.03850  4.10602 -0.00000    2.0  2.0
+ 31 C   5.52802  4.66203  3.55000    2.0  2.0
+ 32 C   7.82887  3.91444  3.55000    2.0  2.0
+ 33 C   7.82887  3.91444  2.13000    2.0  2.0
+ 34 C   9.03850  4.10602  1.42000    2.0  2.0
+ 35 C  10.12972  4.66203  2.13000    2.0  2.0
+ 36 C  10.99571  5.52802  1.42000    2.0  2.0
+ 37 C  10.99571  5.52802 -0.00000    2.0  2.0
+ 38 C  10.12972  4.66203  3.55000    2.0  2.0
+ 39 C  11.55172  6.61924  3.55000    2.0  2.0
+ 40 C  11.55172  6.61924  2.13000    2.0  2.0
+Atoms.SpeciesAndCoordinates>
+Atoms.UnitVectors.Unit             Ang # Ang|AU 
+<Atoms.UnitVectors
+ 15.65774  0.0    0.0 
+  0.0  15.65774   0.0 
+  0.0   0.0    4.26000
+Atoms.UnitVectors>
+ 
+#
+# SCF
+#
+ 
+scf.XcType                 GGA-PBE # LDA|LSDA-CA|LSDA-PW|GGA-PBE 
+scf.SpinPolarization        off    # On|Off|NC                   
+scf.ElectronicTemperature  300.0   # default=300 (K)             
+scf.energycutoff           200.0   # default=150 (Ry)            
+scf.maxIter                 100    # default=40                  
+scf.EigenvalueSolver        band   # DC|Cluster|Band             
+scf.Kgrid                  1 1 12  # means n1 x n2 x n3          
+scf.Mixing.Type           rmm-diis # Simple|Rmm-Diis|Gr-Pulay|Kerker|Rmm-Diisk 
+scf.Init.Mixing.Weight     0.30    # default=0.30                
+scf.Min.Mixing.Weight      0.001   # default=0.001              
+scf.Max.Mixing.Weight      0.400   # default=0.40               
+scf.Mixing.History          7      # default=5                  
+scf.Mixing.StartPulay       5      # default=6                  
+scf.criterion             1.0e-8   # default=1.0e-6 (Hartree) 
+
+#
+# MD or Geometry Optimization 
+#
+ 
+MD.Type                   nomd     # Nomd|Opt|NVE|NVT_VS|NVT_NH 
+                                   # Constraint_Opt|DIIS
+MD.maxIter                  1      # default=1 
+MD.TimeStep                0.5     # default=0.5 (fs) 
+MD.Opt.criterion        1.0e-4     # default=1.0e-4 (Hartree/Bohr) 
+#
+# Band dispersion
+#
+ 
+Band.dispersion            on      # on|off, default=off  
+Band.Nkpath                 1     
+<Band.kpath 
+50  0.0000 0.0000 0.0000   0.0000 0.0000 0.5000  G Z
+Band.kpath>
+#
+# DOS
+#
+ 
+DosGauss.fileout          off     # on|off, default=off 
+DosGauss.Num.Mesh         200     # default=200         
+DosGauss.Width            0.1     # default=0.2(eV)     
+
+DOS.fileout               off     # on|off, default=off 
+DOS.Erange             -3.0   3.0 # default = -20 20    
+DOS.KGrid             1 1 30      # default = Kgrid1 Kgrid2 Kgrid3
+
+
+

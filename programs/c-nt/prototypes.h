@@ -6,6 +6,7 @@ void gen_gr(void);
 int  get_gcd(int n1, int n2);
 
 // files.c
+void print_omxdat(void);
 void print_qein(void);
 void print_cutwall(void);
 void print_gr(void);

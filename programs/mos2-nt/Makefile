@@ -19,6 +19,6 @@ $(TARGET)	:$(OBJECTS)
 	$(CC) $(CFLAGS) $(RUN_OPTIONS) -o $(TARGET) $(OBJECTS) $(LIBS)
 
 clean	:
-	rm -f $(TARGET) $(OBJECTS) core a.out *~ "#"* 
+	rm -f $(TARGET) $(OBJECTS) core a.out *~ "#"* QE.in OMX.dat *.vasp
 
 

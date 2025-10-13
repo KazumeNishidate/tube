@@ -1,6 +1,7 @@
 #include  <stdio.h>
 #include  <sys/types.h>
 FILE *chtout, *grout, *wallout, *rotwallout, *cutout, *tbout, *qein;
+FILE *omxdat;
 
 #ifndef  PI
 #define  PI         3.1415926535897932385

@@ -4,6 +4,146 @@
 #include  "tube.h"
 #include  "prototypes.h"
 
+void print_omxdat(void){
+  int i, cnt=0;
+  double radius = tb.L/(2.0*PI);  
+  double tx, ty, tz;
+
+  if((omxdat = fopen("./OMX.dat","w"))==NULL){
+    printf("cannot open out. Abort\n");
+    exit(EXIT_FAILURE);
+  }
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# OpenMX data file \n");
+  fprintf(omxdat,"# (%d, %d) MoS2 nanotube \n",tb.n,tb.m);
+  fprintf(omxdat,"#\n \n");
+
+  fprintf(omxdat,"System.CurrrentDirectory         ./    # default=./ \n");
+  fprintf(omxdat,"System.Name         nanotube \n");
+  fprintf(omxdat,"level.of.stdout       1    # default=1 (1-3)\n");
+  fprintf(omxdat,"level.of.fileout      0    # default=1 (1-3)\n \n");
+  fprintf(omxdat,"### DATA.PATH    ../../openmx3.9/DFT_DATA19 \n");
+  
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Definition of Atomic Species \n");
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"Species.Number        2\n");
+  fprintf(omxdat,"<Definition.of.Atomic.Species\n");
+  fprintf(omxdat," Mo   Mo7.0-s3p2d2f1  Mo_PBE19\n");
+  fprintf(omxdat,"  S    S7.0-s3p2d2f1   S_PBE19\n");  
+  fprintf(omxdat,"Definition.of.Atomic.Species>\n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Atoms\n");
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"Atoms.Number          %d\n",tb.catm/2+tb.catm); // 2 x (MoS2)
+  fprintf(omxdat,"Atoms.SpeciesAndCoordinates.Unit   Ang # Ang|AU\n");    
+  fprintf(omxdat,"<Atoms.SpeciesAndCoordinates\n");
+
+  for(i=0;i<tb.catm;i++){
+    if(tb.BN[i] == 0) { // Mo
+      cnt++;
+      tx = tb.tx[i];
+      ty = tb.ty[i];
+      tz = tb.tz[i];
+      fprintf(omxdat,"%3d  Mo  %8.5f %8.5f %8.5f   7.0  7.0\n",cnt, tx,ty,tz);
+    }
+  }
+
+  for(i=0;i<tb.catm;i++){
+    if(tb.BN[i] == 1) { // S
+      cnt++;
+      tx = tb.tx[i];
+      ty = tb.ty[i];
+      tx -= 2.0*radius;
+      ty -= 2.0*radius;
+      tx /= radius;
+      ty /= radius;
+      tx *= (radius-tb.r_s2/2.0);
+      ty *= (radius-tb.r_s2/2.0);
+      tx += 2.0*radius;
+      ty += 2.0*radius;
+      
+      tz = tb.tz[i];
+      fprintf(omxdat,"%3d   S  %8.5f %8.5f %8.5f   3.0  3.0\n",cnt,tx,ty,tz);
+    }
+  }
+  for(i=0;i<tb.catm;i++){
+    if(tb.BN[i] == 1) { // S
+      cnt++;
+      tx = tb.tx[i];
+      ty = tb.ty[i];
+      tx -= 2.0*radius;
+      ty -= 2.0*radius;
+      tx /= radius;
+      ty /= radius;
+      tx *= (radius+tb.r_s2/2.0);
+      ty *= (radius+tb.r_s2/2.0);
+      tx += 2.0*radius;
+      ty += 2.0*radius;
+      
+      tz = tb.tz[i];
+      fprintf(omxdat,"%3d   S  %8.5f %8.5f %8.5f   3.0  3.0\n",cnt,tx,ty,tz);
+    }
+  }
+  fprintf(omxdat,"Atoms.SpeciesAndCoordinates>\n");  
+
+  fprintf(omxdat,"Atoms.UnitVectors.Unit             Ang # Ang|AU \n");
+  fprintf(omxdat,"<Atoms.UnitVectors\n");
+  fprintf(omxdat," %8.5f  0.0    0.0 \n",tb.LX);
+  fprintf(omxdat,"  0.0  %8.5f   0.0 \n",tb.LY);
+  fprintf(omxdat,"  0.0   0.0   %8.5f\n",tb.LZ);
+  fprintf(omxdat,"Atoms.UnitVectors>\n \n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# SCF\n");    
+  fprintf(omxdat,"#\n \n");    
+
+  fprintf(omxdat,"scf.XcType                 GGA-PBE # LDA|LSDA-CA|LSDA-PW|GGA-PBE \n");
+  fprintf(omxdat,"scf.SpinPolarization        off    # On|Off|NC                   \n");
+  fprintf(omxdat,"scf.ElectronicTemperature  300.0   # default=300 (K)             \n");
+  fprintf(omxdat,"scf.energycutoff           200.0   # default=150 (Ry)            \n");
+  fprintf(omxdat,"scf.maxIter                 200    # default=40                  \n");
+  fprintf(omxdat,"scf.EigenvalueSolver        band   # DC|Cluster|Band             \n");
+  fprintf(omxdat,"scf.Kgrid                  1 1 14  # means n1 x n2 x n3          \n");
+  fprintf(omxdat,"scf.Mixing.Type          rmm-diisk # Simple|Rmm-Diis|Gr-Pulay|Kerker|Rmm-Diisk \n");
+  fprintf(omxdat,"scf.Init.Mixing.Weight     0.30    # default=0.30                \n");
+  fprintf(omxdat,"scf.Min.Mixing.Weight      0.001   # default=0.001              \n");
+  fprintf(omxdat,"scf.Max.Mixing.Weight      0.400   # default=0.40               \n");
+  fprintf(omxdat,"scf.Mixing.History          20     # default=5                  \n");  
+  fprintf(omxdat,"scf.Mixing.StartPulay       5      # default=6                  \n");
+  fprintf(omxdat,"scf.criterion             1.0e-8   # default=1.0e-6 (Hartree) \n\n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# MD or Geometry Optimization \n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"MD.Type                   nomd     # Nomd|Opt|NVE|NVT_VS|NVT_NH \n");
+  fprintf(omxdat,"                                   # Constraint_Opt|DIIS\n");  
+  fprintf(omxdat,"MD.maxIter                  1      # default=1 \n");
+  fprintf(omxdat,"MD.TimeStep                0.5     # default=0.5 (fs) \n");
+  fprintf(omxdat,"MD.Opt.criterion        1.0e-4     # default=1.0e-4 (Hartree/Bohr) \n");      
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Band dispersion\n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"Band.dispersion            on      # on|off, default=off  \n");
+  fprintf(omxdat,"Band.Nkpath                 1     \n");
+  fprintf(omxdat,"<Band.kpath \n");
+  fprintf(omxdat,"50  0.0000 0.0000 0.0000   0.0000 0.0000 0.5000  G Z\n");  
+  fprintf(omxdat,"Band.kpath>\n");  
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# DOS\n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"DosGauss.fileout          off     # on|off, default=off \n");
+  fprintf(omxdat,"DosGauss.Num.Mesh         200     # default=200         \n");
+  fprintf(omxdat,"DosGauss.Width            0.1     # default=0.2(eV)     \n\n");
+  fprintf(omxdat,"DOS.fileout               off     # on|off, default=off \n");
+  fprintf(omxdat,"DOS.Erange             -3.0   3.0 # default = -20 20    \n");
+  fprintf(omxdat,"DOS.KGrid             1 1 30      # default = Kgrid1 Kgrid2 Kgrid3\n");
+  fprintf(omxdat,"\n\n\n");
+}
+
 void print_qein(void){
   int i;
   double radius = tb.L/(2.0*PI);  

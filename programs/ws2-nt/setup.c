@@ -8,8 +8,8 @@ void set_param(void){
   double dx, dy;
   int setx, setnx, setny;
   
-  tb.n =    14;   // chiral index (n,m)
-  tb.m =    14;
+  tb.n =    17;   // chiral index (n,m)
+  tb.m =    17;
   
   setx  =  25;  // The values, setx, setnx, and setny defines how
   setnx =  30;  // large sandbox you are using to make a wall of tube.

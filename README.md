@@ -23,7 +23,7 @@
   You can generate (n, m) nanotube atomic coordinates by redefining the above index number.
 
   
-  The output file 'fig*vasp' is the atomic coordinates in VASP format. You can visualize these using the code [VESTA](https://jp-minerals.org/vesta/jp/).
+  The output file 'fig*vasp' is the atomic coordinates in VASP format. You can visualize these using the [VESTA](https://jp-minerals.org/vesta/jp/).
 
 - fig1_sandbox.vasp : initial graphene sheet
 - fig2_Ch-T-vectors.vasp : Chiral and translational vectors
@@ -31,11 +31,11 @@
 - fig4_cutout.vasp : cutout the graphene to make a wall of the tube
 - fig5_tube.vasp : (n,m) nanotube 
 
-The file QE.in contains the atomic coordinates definition for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/), which can be visualized using the [XCRYSDEN](http://www.xcrysden.org/).
+The file OMX.dat is the data file for the [OpenMX](https://www.openmx-square.org/), while the file QE.in is for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/). Examples of the band structure calculation are saved in the 'omx-ex' and 'qe-ex' directories.
 
-The directory 'examples' contains input files for QE and the band structures of nanotubes where this program generated the atomic coordinates. Note that some of the 'metallic' carbon nanotubes with small diameters open small energy gaps because of their steep curvature [1,2]. You should manually optimize the supercell size of the CELL_PARAMETERS section of QE input files to maintain accuracy and computational costs, especially for large-radius NTs, since the LX and LY are automatically set as four times larger than their radius. Also, structural relaxations should be performed for nanotubes before the band structure calculations. 
+Note that some of the 'metallic' carbon nanotubes with small diameters open small energy gaps because of their steep curvature [1,2]. You should manually optimize the supercell size to maintain accuracy and computational efficiency, especially for large-radius nanotubes, as the dimensions of the supercell are automatically set to be four times the radius. Additionally, structural relaxations should be performed on nanotubes before conducting band structure calculations. 
   
-You can refer to the Sec. 7.2 of the book, [C言語によるコンピュータシミュレーション](http://web.cc.iwate-u.ac.jp/~nisidate/main.pdf) (Japanese), for more detail.
+You can refer to the Sec. 7.2 of the book, [Computer simulation with C](http://web.cc.iwate-u.ac.jp/~nisidate/main.pdf) (Japanese), for more detail.
   
 **Reference**
 
@@ -62,3 +62,4 @@ You can refer to the Sec. 7.2 of the book, [C言語によるコンピュータ�
 
 [7] M. Ghorbani-Asl, N. Zibounche, M. Wahiduzzaman, A. F. Oliveira, A. Kuc, and T. Heine, Sci. Rep. 3, 2961 (2013).
 [https://doi.org/10.1038/srep02961](https://doi.org/10.1038/srep02961)
+

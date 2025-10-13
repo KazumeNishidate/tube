@@ -66,7 +66,7 @@ void check_nn(void){
     tb.ttx[cnt2] = tb.tx[i];  
     tb.tty[cnt2] = tb.ty[i];
     tb.ttz[cnt2] = tb.tz[i];
-    tb.id_BN[cnt2] = tb.crBN[i]; // Mo[0] or S[1]
+    tb.id_BN[cnt2] = tb.crBN[i]; // W[0] or S[1]
     cnt2++;
   }
   
@@ -77,7 +77,7 @@ void check_nn(void){
       tb.tx[i] = tb.ttx[i];
       tb.ty[i] = tb.tty[i];
       tb.tz[i] = tb.ttz[i];
-      tb.BN[i] = tb.id_BN[i]; // Mo[0] or S[1]
+      tb.BN[i] = tb.id_BN[i]; // W[0] or S[1]
     }
   }
 
@@ -87,10 +87,10 @@ void check_nn(void){
   }
   tb.n_B = cnt;
   tb.n_N = tb.catm-cnt;  
-  printf("   number of atoms: (Mo, S) = (%d, %d) \n\n",
+  printf("   number of atoms: (W, S) = (%d, %d) \n\n",
 	 tb.n_B, 2*tb.n_N);    
   if(cnt != tb.catm-cnt) {
-    printf("\n   The number of Mo must equal the number of 2S  \n");
+    printf("\n   The number of W must equal the number of 2S  \n");
     printf("   to fulfill the cycric boundary condition.   \n");
     printf("     Calculation was interrupted by this inconsistency.\n");    
     printf("\n   Try another (n, m) vector set.\n\n");

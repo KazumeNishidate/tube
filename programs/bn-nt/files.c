@@ -4,6 +4,109 @@
 #include  "tube.h"
 #include  "prototypes.h"
 
+void print_omxdat(void){
+  int i;
+  double tx, ty, tz;
+
+  if((omxdat = fopen("./OMX.dat","w"))==NULL){
+    printf("cannot open out. Abort\n");
+    exit(EXIT_FAILURE);
+  }
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# OpenMX data file \n");
+  fprintf(omxdat,"# (%d, %d) BN nanotube \n",tb.n,tb.m);
+  fprintf(omxdat,"#\n \n");
+
+  fprintf(omxdat,"System.CurrrentDirectory         ./    # default=./ \n");
+  fprintf(omxdat,"System.Name         nanotube \n");
+  fprintf(omxdat,"level.of.stdout       1    # default=1 (1-3)\n");
+  fprintf(omxdat,"level.of.fileout      0    # default=1 (1-3)\n \n");
+  fprintf(omxdat,"### DATA.PATH    ../../openmx3.9/DFT_DATA19 \n");
+  
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Definition of Atomic Species \n");
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"Species.Number        2\n");
+  fprintf(omxdat,"<Definition.of.Atomic.Species\n");
+  fprintf(omxdat,"  B   B7.0-s3p2d2     B_PBE19\n");
+  fprintf(omxdat,"  N   N6.0-s3p2d2     N_PBE19\n");  
+  fprintf(omxdat,"Definition.of.Atomic.Species>\n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Atoms\n");
+  fprintf(omxdat,"#\n \n");
+
+  fprintf(omxdat,"Atoms.Number          %d\n",tb.catm);
+  fprintf(omxdat,"Atoms.SpeciesAndCoordinates.Unit   Ang # Ang|AU\n");    
+  fprintf(omxdat,"<Atoms.SpeciesAndCoordinates\n");
+  for(i=0;i<tb.catm;i++){
+    tx = tb.tx[i];
+    ty = tb.ty[i];
+    tz = tb.tz[i];
+    if(tb.BN[i] == 0){
+      fprintf(omxdat,"%3d B  %8.5f %8.5f %8.5f    1.5  1.5\n",i+1,tx,ty,tz);      
+    } else {
+      fprintf(omxdat,"%3d N  %8.5f %8.5f %8.5f    2.5  2.5\n",i+1,tx,ty,tz);
+    }
+  }
+  fprintf(omxdat,"Atoms.SpeciesAndCoordinates>\n");  
+
+  fprintf(omxdat,"Atoms.UnitVectors.Unit             Ang # Ang|AU \n");
+  fprintf(omxdat,"<Atoms.UnitVectors\n");
+  fprintf(omxdat," %8.5f  0.0    0.0 \n",tb.LX);
+  fprintf(omxdat,"  0.0  %8.5f   0.0 \n",tb.LY);
+  fprintf(omxdat,"  0.0   0.0   %8.5f\n",tb.LZ);
+  fprintf(omxdat,"Atoms.UnitVectors>\n \n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# SCF\n");    
+  fprintf(omxdat,"#\n \n");    
+
+  fprintf(omxdat,"scf.XcType                 GGA-PBE # LDA|LSDA-CA|LSDA-PW|GGA-PBE \n");
+  fprintf(omxdat,"scf.SpinPolarization        off    # On|Off|NC                   \n");
+  fprintf(omxdat,"scf.ElectronicTemperature  300.0   # default=300 (K)             \n");
+  fprintf(omxdat,"scf.energycutoff           200.0   # default=150 (Ry)            \n");
+  fprintf(omxdat,"scf.maxIter                 100    # default=40                  \n");
+  fprintf(omxdat,"scf.EigenvalueSolver        band   # DC|Cluster|Band             \n");
+  fprintf(omxdat,"scf.Kgrid                  1 1 16  # means n1 x n2 x n3          \n");
+  fprintf(omxdat,"scf.Mixing.Type           rmm-diis # Simple|Rmm-Diis|Gr-Pulay|Kerker|Rmm-Diisk \n");
+  fprintf(omxdat,"scf.Init.Mixing.Weight     0.30    # default=0.30                \n");
+  fprintf(omxdat,"scf.Min.Mixing.Weight      0.001   # default=0.001              \n");
+  fprintf(omxdat,"scf.Max.Mixing.Weight      0.400   # default=0.40               \n");
+  fprintf(omxdat,"scf.Mixing.History          7      # default=5                  \n");  
+  fprintf(omxdat,"scf.Mixing.StartPulay       5      # default=6                  \n");
+  fprintf(omxdat,"scf.criterion             1.0e-8   # default=1.0e-6 (Hartree) \n\n");
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# MD or Geometry Optimization \n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"MD.Type                   nomd     # Nomd|Opt|NVE|NVT_VS|NVT_NH \n");
+  fprintf(omxdat,"                                   # Constraint_Opt|DIIS\n");  
+  fprintf(omxdat,"MD.maxIter                  1      # default=1 \n");
+  fprintf(omxdat,"MD.TimeStep                0.5     # default=0.5 (fs) \n");
+  fprintf(omxdat,"MD.Opt.criterion        1.0e-4     # default=1.0e-4 (Hartree/Bohr) \n");      
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# Band dispersion\n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"Band.dispersion            on      # on|off, default=off  \n");
+  fprintf(omxdat,"Band.Nkpath                 1     \n");
+  fprintf(omxdat,"<Band.kpath \n");
+  fprintf(omxdat,"50  0.0000 0.0000 0.0000   0.0000 0.0000 0.5000  G Z\n");  
+  fprintf(omxdat,"Band.kpath>\n");  
+
+  fprintf(omxdat,"#\n");
+  fprintf(omxdat,"# DOS\n");    
+  fprintf(omxdat,"#\n \n");
+  fprintf(omxdat,"DosGauss.fileout          off     # on|off, default=off \n");
+  fprintf(omxdat,"DosGauss.Num.Mesh         200     # default=200         \n");
+  fprintf(omxdat,"DosGauss.Width            0.1     # default=0.2(eV)     \n\n");
+  fprintf(omxdat,"DOS.fileout               off     # on|off, default=off \n");
+  fprintf(omxdat,"DOS.Erange             -3.0   3.0 # default = -20 20    \n");
+  fprintf(omxdat,"DOS.KGrid             1 1 30      # default = Kgrid1 Kgrid2 Kgrid3\n");
+  fprintf(omxdat,"\n\n\n");
+}
+
 void print_qein(void){
   int i;
   double tx, ty, tz;

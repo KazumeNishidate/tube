@@ -5,9 +5,11 @@
 #include  "prototypes.h"
 
 void set_param(void){   
-  tb.n =   4;   // chiral index (n,m)
-  tb.m =   2;
-  tb.r_cc = 1.42;  // B-N distance (1.42 A to 1.46 A)
+  tb.n =  15;   // chiral index (n,m)
+  tb.m =  15;
+  tb.r_cc = 1.44;  // B-N distance (1.42 A to 1.46 A)
+                   // here we use d=1.44
+                   // see, Scientific Reports 3, 1385 (2013)
   
   tb.a1x = tb.r_cc*(3.0/2.0);        // unit vector: a1 x
   tb.a1y = tb.r_cc*(sqrt(3.0)/2.0);  //  	        y

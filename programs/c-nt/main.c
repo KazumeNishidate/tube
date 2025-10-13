@@ -23,7 +23,7 @@ int  main(void)
   check_nn();
   print_tube();
   print_qein();   // generate the input file for QE
-  
+  print_omxdat(); // generate the input file for OpenMX
   return 0;
 }
 
