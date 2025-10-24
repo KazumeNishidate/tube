@@ -8,7 +8,7 @@
 
 ### How to use.
 
-  The 'program' directory contains the nanotube makers for arbon NT, h-BN NT, MoS$_2$ NT, WS$_2$ NT, and anatase NT [1-7].
+  The 'program' directory contains the nanotube makers for arbon NT, h-BN NT, MoS$_2$ NT, WS$_2$ NT, and anatase NT [1-8].
 
   Type 'make' and run the code with the `./mktb` command in these directories. 
   
