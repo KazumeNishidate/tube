@@ -8,7 +8,7 @@
 
 ### How to use.
 
-  The 'program' directory contains the nanotube makers for Carbon NT, h-BN NT, MoS$_2$ NT, and WS$_2$ NT [1-7].
+  The 'program' directory contains the nanotube makers for arbon NT, h-BN NT, MoS$_2$ NT, WS$_2$ NT, and anatase NT [1-7].
 
   Type 'make' and run the code with the `./mktb` command in these directories. 
   
@@ -62,4 +62,7 @@ You can refer to the Sec. 7.2 of the book, [Computer simulation with C](http://w
 
 [7] M. Ghorbani-Asl, N. Zibounche, M. Wahiduzzaman, A. F. Oliveira, A. Kuc, and T. Heine, Sci. Rep. 3, 2961 (2013).
 [https://doi.org/10.1038/srep02961](https://doi.org/10.1038/srep02961)
+
+[8] Francesca Nunzi and Filippo De Angelis, J. Phys. Chem C, 115, 2179 (2011).
+[https://pubs.acs.org/doi/abs/10.1021/jp110132k](https://pubs.acs.org/doi/abs/10.1021/jp110132k)
 
