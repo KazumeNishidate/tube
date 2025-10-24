@@ -17,12 +17,10 @@
   The setup.c file defines the Chiral index (n,m)=(10,4).
 
 > tb.n =  10;
-
 > tb.m =  4;
   
   You can generate (n, m) nanotube atomic coordinates by redefining the above index number.
 
-  
   The output file 'fig*vasp' is the atomic coordinates in VASP format. You can visualize these using the [VESTA](https://jp-minerals.org/vesta/jp/).
 
 - fig1_sandbox.vasp : initial graphene sheet
@@ -31,9 +29,9 @@
 - fig4_cutout.vasp : cutout the graphene to make a wall of the tube
 - fig5_tube.vasp : (n,m) nanotube 
 
-The file OMX.dat is the data file for the [OpenMX](https://www.openmx-square.org/), while the file QE.in is for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/). Examples of the band structure calculation are saved in the 'omx-ex' and 'qe-ex' directories.
+The file OMX.dat is the data file for the [OpenMX](https://www.openmx-square.org/), while the file QE.in is for the [Quantum_ESPRESSO](https://www.quantum-espresso.org/). Examples of band-structure calculations are saved in the 'omx-ex' and 'qe-ex' directories.
 
-Note that some of the 'metallic' carbon nanotubes with small diameters open small energy gaps because of their steep curvature [1,2]. You should manually optimize the supercell size to maintain accuracy and computational efficiency, especially for large-radius nanotubes, as the dimensions of the supercell are automatically set to be four times the radius. Additionally, structural relaxations should be performed on nanotubes before conducting band structure calculations. 
+Note that some of the 'metallic' carbon nanotubes with small diameters open small energy gaps because of their steep curvature [1,2]. You should manually optimize the supercell size to maintain accuracy and computational efficiency, especially for large-radius nanotubes, since the supercell dimensions are automatically set to 4 times the nanotube radius. Additionally, structural relaxations should be performed on nanotubes before conducting band structure calculations. This procedure is quite essential for the Anatase (101) nanotubes.
   
 You can refer to the Sec. 7.2 of the book, [Computer simulation with C](http://web.cc.iwate-u.ac.jp/~nisidate/main.pdf) (Japanese), for more detail.
   
