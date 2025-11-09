@@ -8,13 +8,13 @@
 
 ### How to use.
 
-  The 'program' directory contains the nanotube makers for carbon nanotube, h-BN nanotube, MoS<sub>2</sub> nanotube, WS<sub>2</sub> nanotube, and anatase nanotube [1-8].
+  The 'program' directory contains the nanotube makers for carbon nanotube, h-BN nanotube, MoS<sub>2</sub> nanotube, WS<sub>2</sub> nanotube, and Anatase (101) nanotube [1-8].
 
   Type 'make' and run the code with the `./mktb` command in these directories. 
   
-  If you encounter a 'multiple definition error' during the GCC compilation, you can avoid it by adding the option '-z muldefs' in the Makefile.
-
-  Here is a brief instruction. The file, setup.c, defines the Chiral index (n,m)=(10,4).
+  If you encounter a 'multiple definition error' during the GCC compilation, you can avoid it by adding the option '-z muldefs' in the Makefile. 
+  
+  The file, setup.c, defines the Chiral index (n,m)=(10,4).
 
 > tb.n =  10;
 > tb.m =  4;
