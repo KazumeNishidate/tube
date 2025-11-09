@@ -2,13 +2,13 @@
 
 # Nanotube maker
 
-[Kazume_NISHIDATE](kazume.nishidate@gmail.com)
+[Kazume NISHIDATE](kazume.nishidate@gmail.com)
 
 -------------------------------------------------------------------------------
 
 ### How to use.
 
-  The 'program' directory contains the nanotube makers for carbon NT, h-BN NT, MoS<sub>2</sub> NT, WS<sub>2</sub> NT, and anatase NT [1-8].
+  The 'program' directory contains the nanotube makers for carbon nanotube, h-BN nanotube, MoS<sub>2</sub> nanotube, WS<sub>2</sub> nanotube, and anatase nanotube [1-8].
 
   Type 'make' and run the code with the `./mktb` command in these directories. 
   
