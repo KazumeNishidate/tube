@@ -1,0 +1,3 @@
+ ./reset-positions.pl fig5_tube.vasp cnt55.vasp
+ 
+./reset-positions.pl fig5_tube.vasp cnt1212.vasp
