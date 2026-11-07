@@ -8,7 +8,7 @@
 
 ### How to use.
 
-  The **tube** generates atomic positions of various nanotubes, such as carbon nanotube, h-BN, MoS$_2$, WS$_2$, and TiO$_2$ anatase (101) nanotubes [1-8].
+  The **tube** generates atomic positions of various nanotubes, such as carbon nanotube, h-BN, MoS$_2$, WS$_2$, and TiO$_2$ anatase (101) nanotubes [1-8]. It also can generate atomic positions of twisted bilayer graphene [9].
 
   Type `make` and run the code with the `./mktb` command in the directories. 
   
@@ -16,7 +16,8 @@
 
 > tb.n =  10;
 > tb.m =  4;
-  
+
+  Where the condition, n >= m, should be fulfilled.
   You can generate (n, m) nanotube atomic coordinates by redefining the above index number.
 
   The output file 'fig...vasp' is the atomic coordinates in VASP format. You can visualize these using the [VESTA](https://jp-minerals.org/vesta/jp/).
@@ -73,4 +74,8 @@ You can refer to the Sec. 7.2 of the book, [Computer simulation with C](http://w
 
 [8] Francesca Nunzi and Filippo De Angelis, J. Phys. Chem C, 115, 2179 (2011).
 [https://pubs.acs.org/doi/abs/10.1021/jp110132k](https://pubs.acs.org/doi/abs/10.1021/jp110132k)
+
+[9] K. Uchida, S. Furuya, J. Iwata, and A. Oshiyama, Phys. Rev. B, 90, 155451 (2014).
+[https://journals.aps.org/prb/abstract/10.1103/PhysRevB.90.155451](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.90.155451)
+
 
