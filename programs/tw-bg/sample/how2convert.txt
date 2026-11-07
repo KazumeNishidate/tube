@@ -1,0 +1,19 @@
+
+How to convert the super cell into the dia shaped cell.
+
+1. Open the file 'fig6_tdwg.vasp' with VESTA
+2. Select the menu items: Edit -> Edit Data -> Unit Cell...
+3. choose 'Transform...' button
+4. Input the following numbers in the
+   'Rotation matrix P' (3x3) as
+     1    0.5    0
+     0    0.5    0
+     0    0      1
+ 5. choose 'OK' and 'Yes' buttons
+ 6. select 'Apply' and 'OK' button
+
+
+
+
+    
+
