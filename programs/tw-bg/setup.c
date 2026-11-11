@@ -5,10 +5,12 @@
 #include  "prototypes.h"
 
 void set_param(void){
-  tb.n =  3;   // n >= m
-  tb.m =  1;  
+  tb.n =  5;   // n >= m
+  tb.m =  4;  
   tb.r_cc = 1.42;  // C-C distance (1.42 A)
-  tb.LZ = 15.0;
+  tb.LZ = 20.0;    // Z dimension of the supercell
+  tb.LZ1  = 5.0;   // z-coordinates of the 1st layer (A)
+  tb.LZ2  = tb.LZ1 + 3.45;  // layer to layer distance is 3.45 A
   
   tb.a1x = tb.r_cc*(3.0/2.0);        // unit vector: a1 x
   tb.a1y = tb.r_cc*(sqrt(3.0)/2.0);  //  	        y
@@ -90,13 +92,13 @@ void mk_tdwg(void){
   for(i=0;i<tb.catm;i++){
     tb.tx[cnt]=tb.crx[i];
     tb.ty[cnt]=tb.cry[i];
-    tb.tz[cnt]=5.0;
+    tb.tz[cnt]=tb.LZ1;
     cnt++;
   }
   for(i=0;i<tb.catm;i++){
     tb.tx[cnt]=tb.brx[i];
     tb.ty[cnt]=tb.bry[i];
-    tb.tz[cnt]=8.5;
+    tb.tz[cnt]=tb.LZ2;
     cnt++;
   }
   tb.catm = cnt;

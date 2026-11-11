@@ -44,7 +44,7 @@ typedef	struct {
   double alpha;
   double radius;     // radius of the tube
   double LX, LY, LZ; // supercell dimension
-  double HX, HY;     // supercell dimension for the rhombic cell
+  double LZ1, LZ2;
   
 } tube_parameters;
 

@@ -7,9 +7,18 @@ How to convert the super cell into the dia shaped cell.
 4. Input the following numbers in the
    'Rotation matrix P' (3x3) as
      1    0.5    0
-     0.5  0.5    0
+     0    0.5    0
      0    0      1
  5. choose 'OK' button
     -> Yes -> Apply -> OK
+
+ 6. Edit -> Edit Data -> Structure Parameters...
+ 7. select the 'Remove duplicate atoms'
+ 8. input an appropriate value in the Threshold window
+    (for example, 1e-3)
+ 9.   Press 'Apply'
+ 10.  to save the structure, you can use the 'Export Data' as
+           File -> Export Data...
+
     
 
