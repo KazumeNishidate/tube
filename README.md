@@ -2,8 +2,6 @@
 
 # tube
 
-revised: Mon Nov  9 01:13:17 JST 2026
-
 [Kazume_NISHIDATE](kazume.nishidate@gmail.com)
 
 -------------------------------------------------------------------------------
